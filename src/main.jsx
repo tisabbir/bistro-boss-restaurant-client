@@ -5,16 +5,23 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Roots from './Pages/Routes/Roots';
+import Home from './Pages/Home/Home/Home';
+import Login from './Pages/Login/Login';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Root</div>,
+    element: <Roots />,
     children: [
       {
-        path: "contacts/:contactId",
-        element: <div>Child ROutes</div>,
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },
