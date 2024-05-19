@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import Footer from "../Shared/Footer/Footer";
 
 
 const Roots = () => {
@@ -6,6 +7,7 @@ const Roots = () => {
         <div>
             This is root
             <Outlet />
+            <Footer />
         </div>
     );
 };
