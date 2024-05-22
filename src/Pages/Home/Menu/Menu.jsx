@@ -10,7 +10,9 @@ const Menu = () => {
         fetch('menu.json')
         .then(res => res.json())
         .then(data => {
-            setMenu(data);
+            const popularData = data.filter(item => item.category === 'salad')
+            console.log(popularData);
+            setMenu(popularData);
         })
 
     },[])

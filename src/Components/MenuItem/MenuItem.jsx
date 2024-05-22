@@ -1,7 +1,7 @@
 
 
 const MenuItem = ({item}) => {
-    const {name, recipe, image, category, price} = item;
+    const {name, recipe, price} = item;
     const url = 'https://picsum.photos/100/100';
     return (
         <div className="flex items-center gap-4">
