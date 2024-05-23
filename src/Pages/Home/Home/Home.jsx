@@ -4,6 +4,7 @@ import CallUs from "../CallUs/CallUs";
 import Category from "../Category/Category";
 import Featured from "../Featured/Featured";
 import Menu from "../Menu/Menu";
+import Testimonial from "../Testimonial/Testimonial";
 
 
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
             <Menu />
             <CallUs />
             <Featured />
+            <Testimonial />
         </div>
     );
 };
