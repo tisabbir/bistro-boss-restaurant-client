@@ -8,6 +8,8 @@ import {
 import Roots from './Pages/Routes/Roots';
 import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Login/Login';
+import OurMenu from './Pages/OurMenu/OurMenu';
+import { HelmetProvider } from 'react-helmet-async';
 
 
 const router = createBrowserRouter([
@@ -20,6 +22,10 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "/menu",
+        element: <OurMenu />,
+      },
+      {
         path: "/login",
         element: <Login />,
       },
@@ -30,7 +36,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <div className='max-w-7xl mx-auto'>
+    <HelmetProvider>
     <RouterProvider router={router} />
+    </HelmetProvider>
     </div>
   </React.StrictMode>,
 )

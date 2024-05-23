@@ -6,10 +6,15 @@ import Featured from "../Featured/Featured";
 import Menu from "../Menu/Menu";
 import Testimonial from "../Testimonial/Testimonial";
 
-
+import { Helmet} from 'react-helmet-async';
 const Home = () => {
     return (
         <div>
+            <Helmet>
+                <title>
+                    Bistro Boss | Home
+                </title>
+            </Helmet>
             <Banner />
             <Category />
             <SubBanner heading={'Bistro Boss'} />
