@@ -1,30 +1,25 @@
-import { useEffect, useState } from "react";
-import SectionTitles from "../../../Components/SectionTitles/SectionTitles";
+
+
 import MenuItem from "../../../Components/MenuItem/MenuItem";
+import useMenu from "../../Hooks/useMenu";
 
 
 
-const Menu = () => {
-    const [menu, setMenu] = useState([]);
-    useEffect(()=>{
-        fetch('menu.json')
-        .then(res => res.json())
-        .then(data => {
-            const popularData = data.filter(item => item.category === 'salad')
-            console.log(popularData);
-            setMenu(popularData);
-        })
+const Menu = ({categoryName}) => {
 
-    },[])
+    const [menu] = useMenu();
+    const category = menu.filter(item => item.category === categoryName);
     return (
-        <section className="mt-12">
-            <SectionTitles headings={'From our Menu'} subheadings={'check it out'} />
+        <section className="mt-12 max-w-6xl mx-auto ">
+            
 
             <div className="grid md:grid-cols-2 gap-4 mt-12">
                 {
-                    menu.map(item => <MenuItem key={item._id} item={item} /> )
+                    category.map(item => <MenuItem key={item._id} item={item} /> )
                 }
             </div>
+
+            <button className="btn btn-outline border-0 border-b-4 mt-6 flex justify-center mx-auto mb-6 text-center">Order Your Favorite Food</button>
         </section>
     );
 };

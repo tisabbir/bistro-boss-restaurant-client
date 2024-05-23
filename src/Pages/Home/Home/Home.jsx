@@ -1,3 +1,4 @@
+import SectionTitles from "../../../Components/SectionTitles/SectionTitles";
 import SubBanner from "../../../Components/SubBanner/SubBanner";
 import Banner from "../Banner/Banner";
 import CallUs from "../CallUs/CallUs";
@@ -18,7 +19,8 @@ const Home = () => {
             <Banner />
             <Category />
             <SubBanner heading={'Bistro Boss'} />
-            <Menu />
+            <SectionTitles headings={'From our Menu'} subheadings={'check it out'} />
+            <Menu categoryName={'popular'} />
             <CallUs />
             <Featured />
             <Testimonial />

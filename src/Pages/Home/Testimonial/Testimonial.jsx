@@ -20,7 +20,6 @@ const Testimonial = () => {
     fetch("reviews.json")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setReviews(data);
       });
   }, []);
