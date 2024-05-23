@@ -2,14 +2,14 @@
 
 const Nav = () => {
     const navOptions = <><li>
-    <a>Item 1</a>
+    <a>Home</a>
   </li>
   <li>
-    <a>Item 3</a>
+    <a>Login</a>
   </li></>
   return (
-    <div>
-      <div className="navbar fixed z-10 bg-opacity-35 bg-black text-white">
+    <div className="">
+      <div className="navbar fixed z-10 bg-opacity-35 bg-black text-white max-w-7xl mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -37,7 +37,7 @@ const Nav = () => {
 
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <a className="btn btn-ghost text-2xl">Bistro Boss</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
