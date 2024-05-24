@@ -24,14 +24,44 @@ const TabForm = () => {
           <Tab>Dessert</Tab>
           <Tab>Drinks</Tab>
         </TabList>
-        <TabPanel></TabPanel>
-        <TabPanel></TabPanel>
-        <TabPanel></TabPanel>
-        <TabPanel></TabPanel>
-        <TabPanel></TabPanel>
+        <TabPanel>
+          <div className='grid md:grid-cols-2 gap-6'>
+          {
+            salad.map(item => <FoodCard key={item._id} item={item} />)
+          }
+          </div>
+        </TabPanel>
+        <TabPanel>
+        <div className='grid md:grid-cols-2 gap-6'>
+          {
+            pizza.map(item => <FoodCard key={item._id} item={item} />)
+          }
+          </div>
+        </TabPanel>
+        <TabPanel>
+        <div className='grid md:grid-cols-2 gap-6'>
+          {
+            soup.map(item => <FoodCard key={item._id} item={item} />)
+          }
+          </div>
+        </TabPanel>
+        <TabPanel>
+        <div className='grid md:grid-cols-2 gap-6'>
+          {
+            dessert.map(item => <FoodCard key={item._id} item={item} />)
+          }
+          </div>
+        </TabPanel>
+        <TabPanel>
+        <div className='grid md:grid-cols-2 gap-6'>
+          {
+            drinks.map(item => <FoodCard key={item._id} item={item} />)
+          }
+          </div>
+        </TabPanel>
       </Tabs>
 
-      <FoodCard />
+     
     </div>
   );
 };
