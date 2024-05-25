@@ -8,7 +8,7 @@ const SignUp = () => {
         formState: { errors },
       } = useForm()
 
-      const onSubmit = (data) => console.log(data)
+      const onSubmit = (data) => console.log('data',data)
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -55,9 +55,11 @@ const SignUp = () => {
                   type="password"
                   placeholder="password"
                   className="input input-bordered"
-                  {...register('password', { minLength:6})}
+                  {...register('password', { required : true, minLength:6, pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).+$/})}
                 />
-                {errors.password && <span className="text-red-600">Password must be at least 6 characters</span>}
+                {errors.password?.type === 'required' && <span className="text-red-600">Password is Required</span>}
+                {errors.password?.type === 'minLength' && <span className="text-red-600">Password must be at least 6 characters</span>}
+                {errors.password?.type === 'pattern' && <span className="text-red-600">Password must have at least one uppercase, one lower case and one number.</span>}
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Sign Up</button>
