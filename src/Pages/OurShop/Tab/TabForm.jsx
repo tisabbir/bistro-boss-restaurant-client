@@ -12,7 +12,6 @@ const TabForm = () => {
   const dessert = menu.filter((item) => item.category === "dessert");
   const drinks = menu.filter((item) => item.category === "drinks");
   const [tabIndex, setTabIndex] = useState(0);
-  console.log(salad, pizza, soup, dessert, drinks);
 
   return (
     <div className="my-12 max-w-5xl mx-auto">
