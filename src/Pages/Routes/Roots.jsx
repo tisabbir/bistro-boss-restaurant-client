@@ -5,7 +5,7 @@ import Nav from "../Shared/Navbar/Nav";
 
 const Roots = () => {
     const location = useLocation();
-    const noHeaderFooter = location.pathname.includes('login')
+    const noHeaderFooter = location.pathname.includes('login') || location.pathname.includes('register')
     return (
         <div>
             {noHeaderFooter || <Nav />}

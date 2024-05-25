@@ -1,13 +1,18 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
+import { auth } from "../../../firebase/firebase.config";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
-export const AuthContext = createContext("");
+export const AuthContext = createContext(auth);
 
 const AuthProvider = ({ children }) => {
-  const [currentCategory, setCurrentCategory] = useState('salad');
+ 
+  const createUser = (email, password) => {
+   return createUserWithEmailAndPassword(auth, email, password);
+  }
 
   const allInfo = {
-    currentCategory,
-    setCurrentCategory,
+   createUser,
+   
   };
   return (
     <AuthContext.Provider value={allInfo}>{children}</AuthContext.Provider>

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import img from '../../../public/assets/others/Illustration.svg'
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+import { Link } from 'react-router-dom';
 const Login = () => {
 
   const captchaRef = useRef(null);
@@ -87,6 +88,7 @@ const Login = () => {
               <button disabled={disabled} className="btn btn-primary">Login</button>
             </div>
           </form>
+          <p>Do not have an account? <Link to={'/register'} className='underline'>Register</Link> Now. </p>
         </div>
       </div>
     </div>
