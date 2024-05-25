@@ -1,3 +1,4 @@
+
 import SectionTitles from "../../../Components/SectionTitles/SectionTitles";
 import SubBanner from "../../../Components/SubBanner/SubBanner";
 import Banner from "../Banner/Banner";
@@ -13,7 +14,7 @@ const Home = () => {
         <div>
             <Helmet>
                 <title>
-                    Bistro Boss | Home
+               Bistro Boss | Home
                 </title>
             </Helmet>
             <Banner />

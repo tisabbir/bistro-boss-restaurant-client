@@ -1,17 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import Roots from './Pages/Routes/Roots';
-import Home from './Pages/Home/Home/Home';
-import Login from './Pages/Login/Login';
-import OurMenu from './Pages/OurMenu/OurMenu';
-import { HelmetProvider } from 'react-helmet-async';
-import OurShop from './Pages/OurShop/OurShop';
-
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Roots from "./Pages/Routes/Roots";
+import Home from "./Pages/Home/Home/Home";
+import Login from "./Pages/Login/Login";
+import OurMenu from "./Pages/OurMenu/OurMenu";
+import { HelmetProvider } from "react-helmet-async";
+import OurShop from "./Pages/OurShop/OurShop";
+import AuthProvider from "./Pages/Providers/AuthProvider/AuthProvider";
 
 const router = createBrowserRouter([
   {
@@ -38,12 +35,14 @@ const router = createBrowserRouter([
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <div className='max-w-7xl mx-auto'>
-    <HelmetProvider>
-    <RouterProvider router={router} />
-    </HelmetProvider>
-    </div>
-  </React.StrictMode>,
-)
+    <AuthProvider>
+      <div className="max-w-7xl mx-auto">
+        <HelmetProvider>
+          <RouterProvider router={router} />
+        </HelmetProvider>
+      </div>
+    </AuthProvider>
+  </React.StrictMode>
+);
