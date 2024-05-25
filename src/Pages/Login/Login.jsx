@@ -3,6 +3,7 @@ import img from '../../../public/assets/others/Illustration.svg'
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { Link } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
+import Swal from 'sweetalert2';
 const Login = () => {
 
   const captchaRef = useRef(null);
@@ -21,6 +22,13 @@ const Login = () => {
         login(email, password)
         .then(() => {
           //success codes
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "You have successfully logged in",
+            showConfirmButton: false,
+            timer: 1500
+          });
         })
         .catch(err => {
           console.log(err);

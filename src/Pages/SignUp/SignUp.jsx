@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
 
@@ -12,10 +13,15 @@ const SignUp = () => {
       const {createUser} = useAuth();
 
       const onSubmit = (data) => {
-        console.log('data',data)
         createUser(data.email, data.password)
-        .then(res => {
-            console.log(res.user);
+        .then(() => {
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your account have been successfully created",
+                showConfirmButton: false,
+                timer: 1500
+              });
         })
         .then(err => {
             console.log(err);
