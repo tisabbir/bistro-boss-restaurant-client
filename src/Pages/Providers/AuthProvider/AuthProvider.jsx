@@ -1,16 +1,17 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
-export const AuthContext = createContext('');
+export const AuthContext = createContext("");
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
+  const [currentCategory, setCurrentCategory] = useState('salad');
 
-    
-    const allInfo = { name : 'Karim'}
-    return (
-        <AuthContext.Provider value={allInfo}>
-            {children}
-        </AuthContext.Provider>
-    );
+  const allInfo = {
+    currentCategory,
+    setCurrentCategory,
+  };
+  return (
+    <AuthContext.Provider value={allInfo}>{children}</AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;

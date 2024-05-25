@@ -7,7 +7,7 @@ const Nav = () => {
   </li>
   <li><NavLink to={"/menu"}>Our Menu
   </NavLink></li>
-  <li><NavLink to={"/shop"}>Our Shop
+  <li><NavLink to={"/shop/salad"}>Our Shop
   </NavLink></li>
   </>
   return (
