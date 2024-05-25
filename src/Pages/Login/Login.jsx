@@ -19,8 +19,8 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         login(email, password)
-        .then(res => {
-          console.log(res.user);
+        .then(() => {
+          //success codes
         })
         .catch(err => {
           console.log(err);
@@ -96,7 +96,8 @@ const Login = () => {
               <button disabled={disabled} className="btn btn-primary">Login</button>
             </div>
           </form>
-          <p>Do not have an account? <Link to={'/register'} className='underline'>Register</Link> Now. </p>
+          <p className='text-center'>Do not have an account? <Link to={'/register'} className='underline'>Register</Link> Now. </p>
+          <Link to={'/'} className="btn btn-outline btn-xs w-1/3 mx-auto my-6">Go To Home</Link>
         </div>
       </div>
     </div>

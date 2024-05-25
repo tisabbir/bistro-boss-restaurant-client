@@ -9,6 +9,8 @@ const Nav = () => {
   </NavLink></li>
   <li><NavLink to={"/shop/salad"}>Our Shop
   </NavLink></li>
+  <li><NavLink to={"/sign"}>Sign Up
+  </NavLink></li>
   </>
   return (
     <div className=" ">
