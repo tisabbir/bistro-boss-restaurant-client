@@ -2,10 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import img from '../../../public/assets/others/Illustration.svg'
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { Link } from 'react-router-dom';
+import useAuth from '../Hooks/useAuth';
 const Login = () => {
 
   const captchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
+  const {login} = useAuth();
 
     useEffect(()=>{
       loadCaptchaEnginge(6)
@@ -16,7 +18,13 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        login(email, password)
+        .then(res => {
+          console.log(res.user);
+        })
+        .catch(err => {
+          console.log(err);
+        })
     }
     const handleValidateCaptcha = () =>{
      const userCaptchaValue = captchaRef.current.value;
