@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import img from '../../../public/assets/others/Illustration.svg'
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 import Swal from 'sweetalert2';
 const Login = () => {
@@ -9,6 +9,9 @@ const Login = () => {
   const captchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
   const {login} = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/'
 
     useEffect(()=>{
       loadCaptchaEnginge(6)
@@ -29,6 +32,7 @@ const Login = () => {
             showConfirmButton: false,
             timer: 1500
           });
+          navigate(from)
         })
         .catch(err => {
           console.log(err);
