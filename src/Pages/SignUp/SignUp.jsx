@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import useAuth from "../Hooks/useAuth";
 
 const SignUp = () => {
 
@@ -8,7 +9,18 @@ const SignUp = () => {
         formState: { errors },
       } = useForm()
 
-      const onSubmit = (data) => console.log('data',data)
+      const {createUser} = useAuth();
+
+      const onSubmit = (data) => {
+        console.log('data',data)
+        createUser(data.email, data.password)
+        .then(res => {
+            console.log(res.user);
+        })
+        .then(err => {
+            console.log(err);
+        })
+      }
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
