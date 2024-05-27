@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../Pages/Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../Pages/Hooks/useAxiosSecure";
+import useCart from "../../Pages/Hooks/useCart";
 
 const FoodCard = ({item}) => {
   const {name, recipe,  price, _id} = item;
@@ -9,10 +10,14 @@ const FoodCard = ({item}) => {
   const location = useLocation();
   const {user} = useAuth();
   const axiosSecure = useAxiosSecure();
-  const handleAddToCart = (food) =>{
+  //bring the refetch from useCart
+
+  const [,refetch] = useCart();
+
+
+  const handleAddToCart = () =>{
     if(user && user.email){
       //TODO: sent the user info and food he tried to order to the database and take further actions
-       console.log(food);
       const cartItem = {
         menuId : _id,
         email: user.email,
@@ -24,7 +29,7 @@ const FoodCard = ({item}) => {
       axiosSecure.post('/carts', cartItem)
       .then(res => {
         if(res.data.insertedId) {
-          //TODO: show a success toast
+          // show a success toast
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -32,6 +37,8 @@ const FoodCard = ({item}) => {
             showConfirmButton: false,
             timer: 1500
           });
+          //TODO: refetch the cart to update the cart items count
+          refetch();
         }
       })
 
@@ -68,7 +75,7 @@ const FoodCard = ({item}) => {
         <p>{recipe}</p>
         <div className="card-actions justify-center">
           
-          <button onClick={()=>handleAddToCart(item)} className="btn btn-outline uppercase border-0 border-b-4 bg-base-300">Add To Cart</button>
+          <button onClick={handleAddToCart} className="btn btn-outline uppercase border-0 border-b-4 bg-base-300">Add To Cart</button>
         </div>
       </div>
     </div>
