@@ -73,7 +73,7 @@ const Nav = () => {
         <div className="navbar-end">
           {user ? (
             <div>
-              <Link to={'/'}>
+              <Link to={'/dashboard/cart'}>
                 <button className="btn">
                   <FaCartShopping className="text-xl" />
                   <div className="badge badge-secondary">+{cart.length}</div>

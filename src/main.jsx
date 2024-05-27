@@ -11,10 +11,9 @@ import OurShop from "./Pages/OurShop/OurShop";
 import AuthProvider from "./Pages/Providers/AuthProvider/AuthProvider";
 import Register from "./Pages/Register/Register";
 import SignUp from "./Pages/SignUp/SignUp";
-import {
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Dashboard from "./Layout/Dashboard";
+import Cart from "./Pages/Dashboard/Cart/Cart";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -49,6 +48,17 @@ const router = createBrowserRouter([
         element: <SignUp />,
       },
     ],
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard />,
+    children : [
+      {
+        path: 'cart',
+        element : <Cart />
+
+      }
+    ]
   },
 ]);
 
