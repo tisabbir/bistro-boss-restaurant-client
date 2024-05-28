@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../Hooks/useAuth";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 const SignUp = () => {
@@ -117,6 +117,7 @@ const SignUp = () => {
                 <button className="btn btn-primary">Sign Up</button>
               </div>
             </form>
+            <p className="text-center mb-6">Already have an account? <Link to={'/login'} className="underline">Login</Link> Now! </p>
           </div>
         </div>
       </div>

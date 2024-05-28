@@ -14,6 +14,7 @@ import SignUp from "./Pages/SignUp/SignUp";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Dashboard from "./Layout/Dashboard";
 import Cart from "./Pages/Dashboard/Cart/Cart";
+import PrivateRoute from "./Pages/Routes/PrivateRoute";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -51,7 +52,7 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard />,
+    element: <PrivateRoute><Dashboard /></PrivateRoute> ,
     children : [
       {
         path: 'cart',
