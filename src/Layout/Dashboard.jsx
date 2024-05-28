@@ -1,12 +1,50 @@
-import { FaBook, FaBurger, FaCalendar, FaCartShopping, FaHouse, FaMoneyBill, FaPeopleGroup, FaShop, FaStar } from "react-icons/fa6";
+import { FaBook, FaBurger, FaCalendar, FaCartShopping, FaHouse, FaList, FaMoneyBill, FaPeopleGroup, FaShop, FaStar, FaUtensils } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
+
+  //TODO: get the isAdmin value from database
+  const isAdmin = true; 
   return (
     <div className="flex">
       <div className="w-64 min-h-screen bg-orange-500">
         <ul className="menu">
+          {
+            isAdmin ? <>
+            <li>
+            <NavLink to={"/dashboard/adminHome"}>
+              <FaHouse />
+              Admin Home
+            </NavLink>
+          </li>
           <li>
+            <NavLink to={"/dashboard/addItems"}>
+              <FaUtensils />
+              Add Items
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={"/dashboard/manageItems"}>
+              <FaList/>
+              Manage Items
+            </NavLink>
+          </li>
+          
+          <li>
+            <NavLink to={"/dashboard/manageBookings"}>
+              <FaBook />
+              Manage Booking
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={"/dashboard/allUsers"}>
+              <FaPeopleGroup />
+              All Users
+            </NavLink>
+          </li>
+            </> : 
+            <>
+            <li>
             <NavLink to={"/dashboard/userHome"}>
               <FaHouse />
               User Home
@@ -42,6 +80,10 @@ const Dashboard = () => {
               My Booking
             </NavLink>
           </li>
+            </>
+          }
+
+          {/* Shared components */}
           <div className="divider"></div>
           <li>
             <NavLink to={"/"}>
