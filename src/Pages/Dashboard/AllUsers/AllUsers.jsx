@@ -13,6 +13,33 @@ const AllUsers = () => {
     },
   });
 
+  const handleMakeAdmin =(user) => {
+    Swal.fire({
+        title: `Are you sure to make ${user.name} an Admin?`,
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Make Him Admin!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axiosSecure.patch(`/users/admin/${user._id}`)
+          .then(res => {
+            console.log(res.data);
+            if(res.data.modifiedCount > 0){
+                refetch();
+                Swal.fire({
+                    title: "Admin Made!",
+                    text: `${user.name} is an Admin Now!`,
+                    icon: "success"
+                  });
+            }
+          })
+        }
+      });
+  }
+
   const handleDeleteUser = (id) => {
     Swal.fire({
         title: "Are you sure?",
@@ -66,9 +93,9 @@ const AllUsers = () => {
                   <td>{item.name}</td>
                   <td>{item.email}</td>
                   <th>
-                    <button className="btn btn-warning">
+                    { item?.role === 'admin' ? 'Admin' : <button onClick={()=>handleMakeAdmin(item)} className="btn btn-warning">
                       <FaUsers />
-                    </button>
+                    </button>}
                   </th>
                   <th>
                     <button onClick={()=>handleDeleteUser(item._id)} className="btn btn-error">
