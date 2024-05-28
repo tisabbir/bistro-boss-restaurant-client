@@ -1,9 +1,10 @@
+import { FaTrash } from "react-icons/fa6";
 import useCart from "../../Hooks/useCart";
 
 const Cart = () => {
   const [cart] = useCart();
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
-  console.log(cart);
+
 
   return (
     <div className="mt-12">
@@ -14,48 +15,50 @@ const Cart = () => {
       </div>
 
       <div>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto mt-12">
           <table className="table">
             {/* head */}
             <thead>
               <tr>
+                <th>No</th>
+                <th>Image</th>
                 <th>Name</th>
                 <th>Price</th>
-                <th>Action</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
-
-
-            
-             {
-                cart.map(item=> <tr key={item._id}>
+              {cart.map((item, index) => (
+                <tr key={item._id}>
                     <td>
-                      <div className="flex items-center gap-3">
-                        <div className="avatar">
-                          <div className="mask mask-squircle w-12 h-12">
-                            <img
-                              src={item.image}
-                              alt="Avatar Tailwind CSS Component"
-                            />
-                          </div>
-                        </div>
-                        <div>
-                          <div className="font-bold">{item.name}</div>
-                          <div className="text-sm opacity-50">Customer Email: {item.email}</div>
-                        </div>
+                        {index + 1}
+                    </td>
+                  <td>
+                    <div className="avatar">
+                      <div className="mask mask-squircle w-12 h-12">
+                        <img
+                          src={item.image}
+                          alt="Avatar Tailwind CSS Component"
+                        />
                       </div>
-                    </td>
-                    <td>
-                        ${item.price}
-                    </td>
-                    <td>
-                        <button className="btn btn-error">Delete</button>
-                    </td>
-                  </tr>)
-             }
-
-
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <div className="font-bold">{item.name}</div>
+                      <div className="text-sm opacity-50">
+                        Customer Email: {item.email}
+                      </div>
+                    </div>
+                  </td>
+                  <td>${item.price}</td>
+                  <td>
+                    <button className="btn btn-error">
+                        <FaTrash/>
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
