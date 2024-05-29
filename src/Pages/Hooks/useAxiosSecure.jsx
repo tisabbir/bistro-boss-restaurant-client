@@ -43,14 +43,16 @@ const useAxiosSecure = () => {
     async (error) => {
       const status = error.response.status;
       console.log("status error in interceptor", status);
+
+      //for 401 and 403 logout the user and navigate the user to the login page
       if (status === 401 || status === 403) {
         await logOut()
           .then(() => {})
           .catch((err) => {
             console.log(err);
-          });
-
+        });
         navigate("/login");
+
       }
       return Promise.reject(error);
     }
