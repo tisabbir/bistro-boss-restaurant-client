@@ -12,7 +12,7 @@ const AdminRoute = ({children}) => {
         return 'Loading.....'
     }
 
-    if(user){
+    if(user && isAdmin){
         return children;
     }
 
