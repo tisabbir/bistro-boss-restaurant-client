@@ -16,6 +16,8 @@ import Dashboard from "./Layout/Dashboard";
 import Cart from "./Pages/Dashboard/Cart/Cart";
 import PrivateRoute from "./Pages/Routes/PrivateRoute";
 import AllUsers from "./Pages/Dashboard/AllUsers/AllUsers";
+import AdminRoute from "./Pages/Routes/AdminRoute";
+import AddItems from "./Pages/Dashboard/AddItems/AddItems";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -64,11 +66,15 @@ const router = createBrowserRouter([
         element: <Cart />,
       },
 
-      //for admin
+      //for admin only
 
       {
         path: "users",
-        element: <AllUsers />,
+        element: <AdminRoute> <AllUsers /></AdminRoute>,
+      },
+      {
+        path: "addItems",
+        element: <AdminRoute> <AddItems /></AdminRoute>,
       },
     ],
   },
