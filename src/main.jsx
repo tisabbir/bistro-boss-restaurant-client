@@ -18,6 +18,7 @@ import PrivateRoute from "./Pages/Routes/PrivateRoute";
 import AllUsers from "./Pages/Dashboard/AllUsers/AllUsers";
 import AdminRoute from "./Pages/Routes/AdminRoute";
 import AddItems from "./Pages/Dashboard/AddItems/AddItems";
+import ManageItems from "./Pages/Dashboard/ManageItems/ManageItems";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       },
 
       //for admin only
+      {
+        path:'manageItems',
+        element: <AdminRoute> <ManageItems /> </AdminRoute>
+      },
 
       {
         path: "users",

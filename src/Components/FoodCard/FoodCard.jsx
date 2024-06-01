@@ -5,7 +5,7 @@ import useAxiosSecure from "../../Pages/Hooks/useAxiosSecure";
 import useCart from "../../Pages/Hooks/useCart";
 
 const FoodCard = ({item}) => {
-  const {name, recipe,  price, _id} = item;
+  const {name, recipe,  price, _id, image} = item;
   const navigate = useNavigate();
   const location = useLocation();
   const {user} = useAuth();
@@ -23,7 +23,7 @@ const FoodCard = ({item}) => {
         email: user.email,
         name,
         price,
-        image : 'https://picsum.photos/id/30/300'
+        image
       }
 
       axiosSecure.post('/carts', cartItem)
@@ -65,7 +65,7 @@ const FoodCard = ({item}) => {
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
         <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+          src={image}
           alt="Shoes"
         />
       </figure>
