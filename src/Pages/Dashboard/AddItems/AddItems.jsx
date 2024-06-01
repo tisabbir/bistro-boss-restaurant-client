@@ -1,9 +1,51 @@
 import { useForm } from "react-hook-form";
 import SectionTitles from "../../../Components/SectionTitles/SectionTitles";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
+
+const imageHostingKey = import.meta.env.VITE_image_hosting_key ;
+const imageHostingAPI = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`
 const AddItems = () => {
+  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async(data) => {
+    console.log(data)
+    //image upload to imgBB and then get an url
+    const imageFile = {image: data.image[0]};
+    const res = await axiosPublic.post(imageHostingAPI, imageFile, {
+      headers: {
+        "content-type": "multipart/form-data",
+      }
+    })
+
+    console.log(res.data);
+    if(res.data.success){
+      //now send the data to server and DB
+      const menuItem = {
+        name : data.name,
+        category : data.category,
+        price : parseFloat(data.price),
+        recipe : data.recipe,
+        image : res.data.data.display_url,
+      }
+
+      const menuRes = await axiosSecure.post('/menu', menuItem)
+      if(menuRes.data.insertedId){
+        //show success
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${data.name} has been added to the database successfully`,
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+
+    }
+  };
   return (
     <div>
       <SectionTitles headings={"Add Items"} subheadings={"What's New"} />
@@ -32,10 +74,10 @@ const AddItems = () => {
             </div>
            
             <select
-              {...register("category")}
+              {...register("category")} defaultValue={'default'}
               className="select bg-base-100 w-full"
             >
-              <option disabled selected>
+              <option disabled value={'default'}>
                 Select Your Food Category
               </option>
               <option value={"salad"}>Salad</option>
