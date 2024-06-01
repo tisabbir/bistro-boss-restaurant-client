@@ -15,7 +15,7 @@ const AddItems = () => {
               <span className="label-text">Recipe Name</span>
             </div>
             <input
-              {...register("recipe")}
+              {...register("name")}
               type="text"
               placeholder="Recipe Name"
               className="input input-bordered w-full mb-6"
@@ -69,7 +69,7 @@ const AddItems = () => {
               <span className="label-text">Recipe Details</span>
             </div>
             <textarea
-              {...register("description")}
+              {...register("recipe")}
               type="text"
               placeholder="Recipe Details"
               className="textarea textarea-bordered textarea-lg w-full mb-6"
@@ -77,7 +77,7 @@ const AddItems = () => {
           </label>
           {/* one input ends */}
 
-          <input type="file" className="file-input block w-full max-w-xs" />
+          <input {...register('image')} type="file" className="file-input block w-full max-w-xs" />
 
           <input className="btn block mt-6 bg-[#D1A054] text-white w-1/4" type="submit" value={'Add Items'} />
         </form>
