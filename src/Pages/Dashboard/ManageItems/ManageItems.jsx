@@ -1,9 +1,39 @@
 import { FaPenToSquare, FaTrash } from "react-icons/fa6";
 import SectionTitles from "../../../Components/SectionTitles/SectionTitles";
 import useMenu from "../../Hooks/useMenu";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const ManageItems = () => {
     const [menu] = useMenu();
+    const axiosSecure = useAxiosSecure();
+
+    const handleDelete = (item) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then( async(result) => {
+            if (result.isConfirmed) {
+
+                const res = await axiosSecure.delete(`/menu/${item._id}`)
+                console.log(res.data);
+                if(res.data.deletedCount > 0){
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                      });
+                }
+
+            
+            }
+          });
+    }
   return (
     <div>
       <SectionTitles headings={"Manage all items"} subheadings="Hurry Up" />
@@ -53,7 +83,7 @@ const ManageItems = () => {
                   </button>
                 </th>
                 <th>
-                    <button className="btn btn-error" ><FaTrash /></button>
+                    <button onClick={()=>handleDelete(item)} className="btn btn-error" ><FaTrash /></button>
                 </th>
               </tr>)
               }
