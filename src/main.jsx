@@ -20,6 +20,7 @@ import AdminRoute from "./Pages/Routes/AdminRoute";
 import AddItems from "./Pages/Dashboard/AddItems/AddItems";
 import ManageItems from "./Pages/Dashboard/ManageItems/ManageItems";
 import UpdateItem from "./Pages/Dashboard/UpdateItem/UpdateItem";
+import Payment from "./Pages/Dashboard/Payment/Payment";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
       {
         path: "cart",
         element: <Cart />,
+      },
+      {
+        path: 'payment',
+        element: <Payment />
       },
 
       //for admin only
