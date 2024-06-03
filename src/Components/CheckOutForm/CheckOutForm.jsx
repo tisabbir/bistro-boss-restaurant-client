@@ -16,6 +16,17 @@ const CheckOutForm = () => {
     if (card == null) {
       return;
     }
+    const {error, paymentMethod} = await stripe.createPaymentMethod({
+        type: 'card',
+        card,
+    })
+
+    if(error){
+        console.log('Payment Error', error);
+    } else{
+        console.log('Payment Method', paymentMethod);
+    }
+
   };
   return (
     <form onSubmit={handleSubmit} className="mt-12 ml-12">
