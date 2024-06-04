@@ -21,6 +21,7 @@ import AddItems from "./Pages/Dashboard/AddItems/AddItems";
 import ManageItems from "./Pages/Dashboard/ManageItems/ManageItems";
 import UpdateItem from "./Pages/Dashboard/UpdateItem/UpdateItem";
 import Payment from "./Pages/Dashboard/Payment/Payment";
+import PaymentHistory from "./Pages/Dashboard/PaymentHistory/PaymentHistory";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: 'payment',
         element: <Payment />
+      },
+      {
+        path: 'history',
+        element: <PaymentHistory />
       },
 
       //for admin only
